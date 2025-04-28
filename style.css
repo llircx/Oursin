@@ -1,0 +1,269 @@
+/* Hide scrollbar only for WebKit browsers, but allow scrolling */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #a9a9a9;
+  text-align: center;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+header {
+  padding: 0 5%;
+  background-color: #a9a9a9;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.imgIndex {
+  width: 100%;
+  max-width: 1200px; /* Prevent overly large images */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.container-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  padding: 10px 0;
+}
+
+.container-logo div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container-logo div a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #a9a9a9;
+  transition: background-color 0.3s;
+}
+
+.container-logo div a:hover {
+  background-color: #7cc2a1;
+}
+
+.logo {
+  height: auto;
+  max-height: 150px; /* Reduced for responsiveness */
+  width: 100%;
+  max-width: 500px; /* Adjusted for smaller screens */
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex img {
+  width: 80px; /* Slightly smaller for mobile */
+  border-radius: 10px;
+}
+
+.separator::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  border-radius: 1px;
+  height: 60%;
+  background-color: #000;
+  margin-left: 15px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.navbar {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+
+.navbar .menu {
+  display: flex;
+  flex-wrap: wrap; /* Allow menu items to wrap */
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.navbar .menu a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #ffd700;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.navbar .menu a.active {
+  color: #857728;
+}
+
+.navbar .menu a:hover {
+  background-color: #333;
+}
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center for mobile */
+  padding: 20px 5%;
+  margin: 10px 0;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  height: 35px; /* Slightly smaller for mobile */
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.btnsign {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 15px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.btnsign:hover {
+  background-color: #7cc2a1;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Mobile Devices (up to 600px) */
+@media (max-width: 600px) {
+  .container-logo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .container-logo div {
+    margin: 10px 0;
+  }
+
+  .container-logo div a {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .logo {
+    max-width: 300px;
+    max-height: 100px;
+  }
+
+  .flex img {
+    width: 60px;
+  }
+
+  .navbar .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar .menu a {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+
+  .contact-us {
+    padding: 15px 5%;
+  }
+
+  .social-icons img {
+    height: 30px;
+  }
+
+  .welcome h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcome p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablets (601px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .container-logo {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .logo {
+    max-width: 400px;
+    max-height: 120px;
+  }
+
+  .navbar .menu {
+    gap: 20px;
+  }
+
+  .navbar .menu a {
+    font-size: 0.95rem;
+  }
+
+  .social-icons img {
+    height: 35px;
+  }
+}
+
+/* Desktops (901px and above) */
+@media (min-width: 901px) {
+  .container-logo {
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    max-width: 500px;
+  }
+
+  .navbar .menu {
+    gap: 30px;
+  }
+}
+
+/* ///////////////////////////////////////////////////// */

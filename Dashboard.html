@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="Dashboard.css" />
+
+  <style>
+    .styled-button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .styled-button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .styled-button:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .styled-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h2>Add Product</h2>
+    <form id="productForm">
+      <input type="file" id="productImage" accept="image/*" required />
+      <input type="text" id="productTitle" placeholder="Enter title" required />
+      <input type="number" id="productPrice" placeholder="Enter price" step="0.01" required />
+      <button type="submit">Add Product</button>
+    </form>
+    <div id="stats" class="dashboard-stats"></div>
+    <div id="productList" class="products"></div>
+
+  </div>
+
+  <!-- <button type="submit" onclick="window.location.href='index.html'">Go to Products</button> -->
+  <!-- <button type="button" id="goToProducts" onclick="window.location.href='index.html'" class="styled-button">Go to Products</button> -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const productForm = document.getElementById("productForm");
+      const productList = document.getElementById("productList");
+
+      productForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const title = document.getElementById("productTitle").value.trim();
+        const price = parseFloat(document.getElementById("productPrice").value);
+        const imageFile = document.getElementById("productImage").files[0];
+
+        if (!imageFile) {
+          alert("Please select an image.");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          const base64Image = reader.result; // Base64 encoded image
+
+          const token = localStorage.getItem("token"); // Get token from localStorage
+          console.log(token)
+
+          if (!token) {
+            alert("No token found. Please log in again.");
+            return;
+          }
+
+          const productData = {
+            name: title,
+            price: price,
+            imageUrl: base64Image
+          };
+          // fetch("http://project01spiderx.runasp.net/api/Photo/upload-image")
+
+          fetch("https://project01spiderx.runasp.net/api/Products/create", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(productData)
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log("Product added successfully:", data);
+              alert("Product added successfully!");
+              productForm.reset();
+              // Optionally, you can refresh the product list here
+              loadProducts();
+            })
+            .catch(error => {
+              console.error("Error adding product:", error);
+              alert("Failed to add product. Please try again.");
+            });
+        };
+
+        reader.readAsDataURL(imageFile);
+      });
+
+      function loadProducts() {
+        // You can implement loading and displaying products here if needed
+      }
+    });
+  </script>
+
+
+  <!-- <script src="Dashboard.js"></script> -->
+</body>
+
+</html>

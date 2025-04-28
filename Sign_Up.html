@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oursin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* (All your styles here - I kept them exactly as you wrote.) */
+    .hero-text {
+      background-image: url(assets/lorsin.jpg);
+      background-attachment: scroll;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 90%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      padding-right: 50px;
+    }
+    .auth-forms-container {
+      display: flex;
+      gap: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      justify-content: center;
+    }
+    .OR {
+      padding: 25px 20px;
+      background-color: #ddd;
+      border-radius: 50%;
+      border: 9px dotted #a89492;
+      text-transform: uppercase;
+      font-size: larger;
+    }
+    .signup-container,
+    .signin-container {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      width: 350px;
+      text-align: center;
+    }
+    .signup-container h1,
+    .signin-container h1 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .form-group input {
+      width: 90%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .signup-button,
+    .signin-button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+    .signup-button:hover,
+    .signin-button:hover {
+      background-color: #0056b3;
+    }
+    .btn-sign {
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+      padding: 0;
+      font-size: inherit;
+    }
+    .btn-sign:hover {
+      text-decoration: underline;
+    }
+    .signin-link,
+    .signup-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .error-message {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .welcome-container {
+      display: none;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 350px;
+      text-align: center;
+    }
+    .link-button {
+      all: unset;
+      color: rgb(10, 122, 220);
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container-logo">
+      <div class="flex">
+        <h2>Oursin</h2>
+        <img src="assets/logo.jpg" alt="Oursin Logo" />
+      </div>
+      <img class="logo" src="assets/lorsin2.png" alt="Oursin Logo 2" />
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="menu">
+      <a href="index.html" class="navigator-home active">Home</a>
+      <a href="products.html" class="navigator-products">Our Products</a>
+      <a href="favourite.html" class="navigator-favourites">My Favorite</a>
+      <a href="profile.html" class="navigator-profile">Profile</a>
+      <a href="our_Team.html" class="navigator-review">Our Team</a>
+      <a href="coming.html" target="_self" class="navigator-review">Coming Soon</a>
+    </div>
+  </nav>
+
+  <div class="hero-text">
+    <div class="auth-forms-container">
+      <!-- Sign-up form container -->
+      <div class="signup-container" id="signupContainer">
+        <h1>Create Account</h1>
+        <form class="signup-form" id="signupForm">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="form-group">
+            <label for="phonenumber">Phone Number</label>
+            <input type="number" id="phonenumber" name="phonenumber" required />
+          </div>
+          <!-- <div class="form-group">
+            <label for="storename">Store Name</label>
+            <input type="text" id="storename" name="storename" required />
+          </div> -->
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required />
+          </div>
+          <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+        <p class="signin-link">
+          Already have an account?
+          <button class="btn-sign signIn"><a href="Sign_In.html" class="link-button">Sign In</a></button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Welcome message (hidden initially) -->
+    <div class="welcome-container" id="welcomeContainer">
+      <h1>Welcome, <span id="welcomeName"></span>!</h1>
+      <p>Your store: <span id="welcomeStore"></span></p>
+      <button class="signin-button" id="signoutButton">Sign Out</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const signupForm = document.getElementById("signupForm");
+      const signupContainer = document.getElementById("signupContainer");
+      const welcomeContainer = document.getElementById("welcomeContainer");
+      const welcomeName = document.getElementById("welcomeName");
+      const welcomeStore = document.getElementById("welcomeStore");
+
+      signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const fullname = document.getElementById("fullname").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const phoneNumber = document.getElementById("phonenumber").value;
+        // const storeName = document.getElementById("storename").value;
+        const address = document.getElementById("address").value;
+
+        if (!validateEmail(email)) {
+          showError(signupForm, "Please enter a valid email address");
+          return;
+        }
+
+        const userData = {
+          fullName: fullname,
+          email: email,
+          password: password,
+          phoneNumber: phoneNumber,
+          address: address
+        };
+
+        axios.post("https://project01spiderx.runasp.net/api/Account/register", userData)
+          .then((response) => {
+            const data = response.data;
+            if (data.success) {
+              showWelcomeMessage(fullname);
+            } else {
+              showError(signupForm, data.message || "Something went wrong!");
+            }
+          })
+          .catch((error) => {
+            const errorMessage = error.response?.data?.message || error.message;
+            showError(signupForm, "Error: " + errorMessage);
+          });
+      });
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function showWelcomeMessage(fullname) {
+        document.querySelector(".auth-forms-container").style.display = "none";
+        welcomeName.textContent = fullname;
+        // welcomeStore.textContent = storeName;
+        welcomeContainer.style.display = "block";
+      }
+
+      function showError(form, message) {
+        const existingError = form.querySelector(".error-message");
+        if (existingError) {
+          existingError.remove();
+        }
+
+        const errorElement = document.createElement("div");
+        errorElement.className = "error-message";
+        errorElement.textContent = message;
+        form.appendChild(errorElement);
+        errorElement.style.display = "block";
+
+        setTimeout(() => {
+          errorElement.style.display = "none";
+        }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>

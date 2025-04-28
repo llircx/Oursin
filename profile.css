@@ -1,0 +1,126 @@
+/* Profile Page Specific Styles */
+.profile-main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: calc(100vh - 300px);
+}
+
+.profile-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #7cc2a1;
+    margin-bottom: 15px;
+}
+
+.image-upload-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.image-upload-container p {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.profile-name {
+    margin: 10px 0;
+    color: #333;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #333;
+    margin-top: 5px;
+}
+
+.input-field {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-field:focus {
+    border-color: #7cc2a1;
+    outline: none;
+}
+
+.save-button {
+    padding: 12px 20px;
+    background-color: #7cc2a1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+    width: 200px;
+    margin-top: 15px;
+}
+
+.save-button:hover {
+    background-color: #5aa986;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .profile-main {
+        padding: 15px;
+    }
+    
+    .profile-container {
+        padding: 15px;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .input-field {
+        padding: 10px 12px;
+    }
+    
+    .save-button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .profile-main {
+        padding: 20px 30px;
+    }
+}

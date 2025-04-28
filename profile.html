@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Oursin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <div class="container-logo">
+            <div class="flex">
+                <h2>Oursin</h2>
+                <img src="assets/logo.jpg" alt="Oursin Logo">
+            </div>
+            <img class="logo" src="assets/lorsin2.png" alt="Oursin Logo 2">
+            <div>
+                <a class="signIn separator" href="Sign_In.html">Sign In</a>
+                <a class="signUp" href="Sign_Up.html">Sign Up</a>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="navbar">
+        <div class="menu">
+            <a href="index.html" target="_self" class="navigator-home">Home</a>
+            <a href="products.html" target="_self" class="navigator-products">Our Products</a>
+            <a href="favourite.html" target="_self" class="navigator-favourites">My Favorite</a>
+            <a href="profile.html" target="_self" class="navigator-profile active">Profile</a>
+            <a href="our_Team.html" target="_self" class="navigator-review">Our Team</a>     
+            <a href="coming.html" target="_self" class="navigator-review">Coming Soon</a>
+        </div>
+    </nav>
+    
+    <main class="profile-main">
+        <div class="profile-container" id="profileContainer">
+            <div class="profile-header">
+                <img class="profile-image" id="profileImage" src="assets/person.svg" alt="Profile Image">
+                <div class="image-upload-container">
+                    <input type="file" id="profileImageUpload" accept="image/*" style="display: none">
+                    <button type="button" id="uploadProfileImageBtn" class="btnsign">Upload Profile Image</button>
+                    <p>Only image files allowed (jpg, png, gif, etc.)</p>
+                </div>
+                <h3 class="profile-name" id="profileGreeting">Hello User</h3>
+            </div>
+            
+            <form class="profile-form">
+                <div class="input-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="input-field" placeholder="Enter your full name" required>
+                    
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="input-field" placeholder="Enter your email" required>
+                    
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
+                    
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="input-field" placeholder="Enter your phone number" required>
+                    
+                    <label for="address">Address</label>
+                    <input type="text" id="address" class="input-field" placeholder="Enter your address">
+                </div>
+                
+                <button type="submit" class="save-button btnsign" id="saveProfileBtn">Save Profile</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-us">
+            <h3>Contact Us</h3>
+            <div class="social-icons">
+                <a href="https://x.com/"><img src="assets/twitter.svg" alt="Twitter"></a>
+                <a href="https://www.instagram.com/"><img src="assets/instagram.svg" alt="Instagram"></a>
+                <a href="https://www.linkedin.com"><img src="assets/linkin.svg" alt="LinkedIn"></a>
+                <a href="index.html"><img src="assets/web.svg" alt="Website"></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Image Upload Functionality
+        document.getElementById('uploadProfileImageBtn').addEventListener('click', function() {
+            document.getElementById('profileImageUpload').click();
+        });
+
+        document.getElementById('profileImageUpload').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    document.getElementById('profileImage').src = event.target.result;
+                }
+                
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Form Submission
+        document.querySelector('.profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profile saved successfully!');
+            // Here you would typically send the data to a server
+        });
+    </script>
+</body>
+</html>

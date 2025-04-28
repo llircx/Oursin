@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon | Oursin</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .coming-soon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh;
+        padding: 20px;
+        text-align: center;
+      }
+      
+      .coming-soon-container h1 {
+        font-size: 3rem;
+        color: #ffd700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      
+      .coming-soon-container p {
+        font-size: 1.5rem;
+        color: white;
+        max-width: 800px;
+        margin-bottom: 30px;
+      }
+      
+      .countdown {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      
+      .countdown-item {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        min-width: 80px;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffd700;
+      }
+      
+      .countdown-label {
+        font-size: 0.9rem;
+      }
+      
+      @media (max-width: 600px) {
+        .coming-soon-container h1 {
+          font-size: 2rem;
+        }
+        
+        .coming-soon-container p {
+          font-size: 1.1rem;
+        }
+        
+        .countdown {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        
+        .countdown-item {
+          min-width: 60px;
+          padding: 10px 15px;
+        }
+        
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+      }
+      .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .product-reviews {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .buy-now-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #333;
+        }
+        .product-price{
+            background-color: #ffd700;
+        }
+
+        @media (max-width: 600px) {
+            .products-container {
+                grid-template-columns: 1fr;
+                padding: 20px 10px;
+            }
+            
+            .product-image {
+                height: 250px;
+            }
+        }
+    </style>
+    <script src="code.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="container-logo">
+        <div class="flex">
+          <h2>Oursin</h2>
+          <img src="assets/logo.jpg" alt="Oursin Logo" />
+        </div>
+        <img class="logo" src="assets/lorsin2.png" alt="Oursin Logo 2" />
+        <div>
+          <a class="signIn separator btnsign" href="Sign_In.html">Sign In</a>
+          <a class="signUp btnsign" href="Sign_Up.html">Sign Up</a>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar">
+      <div class="menu">
+        <a href="index.html" target="_self" class="navigator-home">Home</a>
+        <a href="products.html" target="_self" class="navigator-products">Our Products</a>
+        <a href="favourite.html" target="_self" class="navigator-favourites">My Favorite</a>
+        <a href="profile.html" target="_self" class="navigator-profile">Profile</a>
+        <a href="our_Team.html" target="_self" class="navigator-review">Our team</a>
+        <a href="coming_soon.html" target="_self" class="navigator-coming-soon active">Coming Soon</a>
+      </div>
+    </nav>
+    
+    <section class="coming-soon-container">
+      <h1>Coming Soon</h1>
+      <p>We're working hard to bring you something amazing! Stay tuned for our exciting new features and products.</p>
+      
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+        
+      </div>
+      <p>our new collection</p>
+
+      <section class="products-container" id="productList">
+        <div class="product-card">
+            <img src="" alt="Gray Dress" class="product-image">
+            <div class="product-info">
+                <h3 class="product-title">essdddddddd</h3>
+                <p class="product-price">$129.99</p>
+            </div>
+        </div>
+
+    </section>
+    
+    <footer class="footer">
+      <div class="contact-us">
+        <h3>Contact Us</h3>
+        <div class="social-icons">
+          <a href="https://x.com/"><img src="assets/twitter.svg" alt="Twitter" /></a>
+          <a href="https://www.instagram.com/"><img src="assets/instagram.svg" alt="Instagram" /></a>
+          <a href="https://www.linkedin.com"><img src="assets/linkin.svg" alt="LinkedIn" /></a>
+          <a href="index.html"><img src="assets/web.svg" alt="Website" /></a>
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const productList = document.getElementById("productList");
+
+    function loadProducts() {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("No token found. Please log in again.");
+        return;
+      }
+
+      fetch("https://project01spiderx.runasp.net/api/Products/all", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch products");
+          }
+          return response.json();
+        })
+        .then(products => {
+          productList.innerHTML = ""; // Clear the product list first
+
+          products.forEach(product => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+
+            card.innerHTML = `
+              <img src="${product.imageUrl}" alt="${product.name}" class="product-image">
+              <div class="product-info">
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-price">$${product.price.toFixed(2)}</p>
+              </div>
+            `;
+
+            productList.appendChild(card);
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching products:", error);
+          alert("Failed to load products.");
+        });
+    }
+
+    loadProducts(); // Load products when the page loads
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+      const countdownDate = new Date();
+      countdownDate.setDate(countdownDate.getDate() + 30);
+      
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById("days").textContent = days.toString().padStart(2, '0');
+        document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>

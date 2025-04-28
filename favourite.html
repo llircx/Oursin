@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorites - Oursin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Header styles */
+    .container-logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Navigation styles */
+    .navbar {
+      padding: 10px 0;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px 10px;
+    }
+
+    .menu a.active {
+      font-weight: bold;
+      color: #4caf50;
+      border-bottom: 2px solid #4caf50;
+    }
+
+    /* Main content styles */
+    main {
+      min-height: 60vh;
+      padding: 20px;
+    }
+
+    .favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .favorite-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: white;
+    }
+
+    .favorite-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .favorite-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .favorite-card h3 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .favorite-card .price {
+      color: #4caf50;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .rating {
+      color: #ffc107;
+      margin: 5px 0;
+    }
+
+    .remove-btn {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .remove-btn:hover {
+      background-color: #cc0000;
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    /* Welcome section */
+    .welcome {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Footer styles */
+    footer {
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    .contact-us {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .signIn,
+    .signUp {
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signIn {
+      color: #333;
+    }
+
+    .signUp {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .separator {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container-logo">
+      <div class="flex">
+        <h2>Oursin</h2>
+        <img src="assets/logo.jpg" alt="Oursin Logo" class="logo" />
+      </div>
+      <img class="logo" src="assets/lorsin2.png" alt="Oursin Logo 2" />
+      <div>
+        <a class="signIn separator" href="Sign_In.html">Sign In</a>
+        <a class="signUp" href="Sign_Up.html">Sign Up</a>
+      </div>
+    </div>
+  </header>
+  <nav class="navbar">
+    <div class="menu">
+      <a href="index.html" target="_self" class="navigator-home">Home</a>
+      <a href="products.html" target="_self" class="navigator-products">Our Products</a>
+      <a href="favourite.html" target="_self" class="navigator-favourites active">My Favorite</a>
+      <a href="profile.html" target="_self" class="navigator-profile">Profile</a>
+      <a href="our_Team.html" target="_self" class="navigator-review">Our Team</a>
+
+      <a href="coming.html" target="_self" class="navigator-review">Coming Soon</a>
+    </div>
+  </nav>
+  <main>
+    <h1 style="text-align: center; margin: 20px 0; color: #333">
+      My Favorite Products
+    </h1>
+    <div class="favorites-grid" id="favoritesGrid">
+      <!-- Favorites will be loaded here -->
+    </div>
+    <div class="empty-message" id="emptyMessage" style="display: none">
+      You haven't added any favorites yet.
+      <a href="products.html">Browse our products</a> to add some!
+    </div>
+  </main>
+
+  <section class="welcome">
+    <h1>Welcome to Oursin</h1>
+    <p>A website that provides complete information about our products.</p>
+  </section>
+
+  <footer>
+    <div class="contact-us">
+      <h3>Contact Us</h3>
+      <div class="social-icons">
+        <a href="https://x.com/"><img src="assets/twitter.svg" alt="Twitter" /></a>
+        <a href="https://www.instagram.com/"><img src="assets/instagram.svg" alt="Instagram" /></a>
+        <a href="https://www.linkedin.com"><img src="assets/linkin.svg" alt="LinkedIn" /></a>
+        <a href="index.html"><img src="assets/web.svg" alt="Website" /></a>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load products and favorites from localStorage
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+        let favorites = JSON.parse(localStorage.getItem("favourites")) || [];
+
+        // If no favorites in storage, initialize as empty array
+        if (!Array.isArray(favorites)) {
+          favorites = [];
+          localStorage.setItem("favourites", JSON.stringify(favorites));
+        }
+
+        // DOM elements
+        const favoritesGrid = document.getElementById("favoritesGrid");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        // Render favorites
+        function renderFavorites() {
+          favoritesGrid.innerHTML = "";
+
+          if (favorites.length === 0) {
+            emptyMessage.style.display = "block";
+            return;
+          }
+
+          emptyMessage.style.display = "none";
+
+          // Filter products to only show favorited ones
+          const favoriteProducts = products.filter((product) =>
+            favorites.includes(product.id)
+          );
+
+          if (favoriteProducts.length === 0) {
+            emptyMessage.style.display = "block";
+            return;
+          }
+
+          favoriteProducts.forEach((product) => {
+            const favoriteCard = document.createElement("div");
+            favoriteCard.className = "favorite-card";
+            favoriteCard.innerHTML = `
+              <img src="${product.image}" alt="${product.name}">
+              <h3>${product.name}</h3>
+              <p class="price">$${product.price.toFixed(2)}</p>
+              <div class="rating">${"★".repeat(
+                Math.floor(product.rating)
+              )}${"☆".repeat(5 - Math.floor(product.rating))}</div>
+              <button class="remove-btn" data-id="${product.id}">
+                Remove from Favorites
+              </button>
+            `;
+            favoritesGrid.appendChild(favoriteCard);
+          });
+
+          // Add event listeners to remove buttons
+          document.querySelectorAll(".remove-btn").forEach((button) => {
+            button.addEventListener("click", removeFavorite);
+          });
+        }
+
+        // Remove favorite
+        function removeFavorite(event) {
+          const productId = parseInt(event.target.getAttribute("data-id"));
+          favorites = favorites.filter((id) => id !== productId);
+          localStorage.setItem("favourites", JSON.stringify(favorites));
+
+          // Update UI
+          renderFavorites();
+
+          // Optional: Show a confirmation message
+          const productName = event.target
+            .closest(".favorite-card")
+            .querySelector("h3").textContent;
+          alert(`${productName} has been removed from your favorites.`);
+        }
+
+        // Initial render
+        renderFavorites();
+      });
+    </script> -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Define products array directly here
+      const products = [
+        {
+          id: 1,
+          name: "فستان مرجع اسود انيق AIK5066",
+          price: 429.99,
+          image: "assets/products/bright-black.jpg",
+          rating: 4.5,
+          reviews: 320,
+          description: "فستان سهرة أنيق باللون الأسود مع تصميم مميز. قماش عالي الجودة وتفاصيل دقيقة.",
+        },
+        {
+          id: 2,
+          name: "فستان مرجع ازرق غامق",
+          price: 39.99,
+          image: "assets/products/deep-blue.jpeg",
+          rating: 4.3,
+          reviews: 210,
+          description: "فستان أزرق غامق بتصميم عصري. مناسب للمناسبات الخاصة والحفلات.",
+        },
+        // Add more products as needed
+        {
+          id: 3,
+          name: "فستان مرجع لون رمادي",
+          price: 129.99,
+          image: "assets/products/gray.jpg",
+          rating: 4.7,
+          reviews: 178,
+          description: "فستان بلون رمادي أنيق مناسب للسهرات والمناسبات الرسمية.",
+        },
+      ];
+
+      // Load favorites from localStorage
+      let favorites = JSON.parse(localStorage.getItem('favourites')) || [];
+
+      // DOM elements
+      const favoritesGrid = document.getElementById("favoritesGrid");
+      const emptyMessage = document.getElementById("emptyMessage");
+
+      // Render favorites
+      function renderFavorites() {
+        favoritesGrid.innerHTML = "";
+
+        if (favorites.length === 0) {
+          emptyMessage.style.display = "block";
+          return;
+        }
+
+        emptyMessage.style.display = "none";
+
+        // Filter products to only show favorited ones
+        const favoriteProducts = products.filter(product =>
+          favorites.includes(product.id)
+        );
+
+        if (favoriteProducts.length === 0) {
+          emptyMessage.style.display = "block";
+          return;
+        }
+
+        favoriteProducts.forEach(product => {
+          const favoriteCard = document.createElement("div");
+          favoriteCard.className = "favorite-card";
+          favoriteCard.innerHTML = `
+                  <img src="${product.image}" alt="${product.name}">
+                  <h3>${product.name}</h3>
+                  <p class="price">$${product.price.toFixed(2)}</p>
+                  <div class="rating">${"★".repeat(Math.floor(product.rating))}${"☆".repeat(5 - Math.floor(product.rating))}</div>
+                  <button class="remove-btn" data-id="${product.id}">
+                      Remove from Favorites
+                  </button>
+              `;
+          favoritesGrid.appendChild(favoriteCard);
+        });
+
+        // Add event listeners to remove buttons
+        document.querySelectorAll(".remove-btn").forEach(button => {
+          button.addEventListener("click", removeFavorite);
+        });
+      }
+
+      // Remove favorite
+      function removeFavorite(event) {
+        const productId = parseInt(event.target.getAttribute("data-id"));
+        favorites = favorites.filter(id => id !== productId);
+        localStorage.setItem('favourites', JSON.stringify(favorites));
+
+        // Update UI
+        renderFavorites();
+
+        // Optional: Show a confirmation message
+        const productName = event.target.closest(".favorite-card").querySelector("h3").textContent;
+        alert(`${productName} has been removed from your favorites.`);
+      }
+
+      // Initial render
+      renderFavorites();
+    });
+  </script>
+</body>
+
+</html>
